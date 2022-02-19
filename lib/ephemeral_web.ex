@@ -98,6 +98,9 @@ defmodule EphemeralWeb do
       import EphemeralWeb.ErrorHelpers
       import EphemeralWeb.Gettext
       alias EphemeralWeb.Router.Helpers, as: Routes
+
+      # Import layout components
+      import Phexel
     end
   end
 

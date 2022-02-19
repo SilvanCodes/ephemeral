@@ -8,7 +8,6 @@ defmodule EphemeralWeb.Router do
     plug :put_root_layout, {EphemeralWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :put_contact_token
   end
 
   pipeline :api do
@@ -18,12 +17,7 @@ defmodule EphemeralWeb.Router do
   scope "/", EphemeralWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
-  end
-
-  defp put_contact_token(conn, _) do
-    token = Phoenix.Token.sign(conn, "contact socket", UUID.uuid4())
-    assign(conn, :contact_token, token)
+    live "/", ContactLive
   end
 
   # Other scopes may use custom stacks.
