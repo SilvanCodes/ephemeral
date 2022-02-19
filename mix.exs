@@ -48,7 +48,9 @@ defmodule Ephemeral.MixProject do
       # layout library
       {:phexel, git: "https://github.com/SilvanCodes/phexel"},
       # uuids
-      {:uuid, "~> 1.1"}
+      {:uuid, "~> 1.1"},
+      # clustering
+      {:libcluster, "~> 3.3"}
     ]
   end
 

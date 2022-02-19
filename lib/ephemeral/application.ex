@@ -7,6 +7,8 @@ defmodule Ephemeral.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
       # Start the Telemetry supervisor
       EphemeralWeb.Telemetry,
@@ -15,9 +17,10 @@ defmodule Ephemeral.Application do
       # Start the Presence system
       EphemeralWeb.Presence,
       # Start the Endpoint (http/https)
-      EphemeralWeb.Endpoint
+      EphemeralWeb.Endpoint,
       # Start a worker by calling: Ephemeral.Worker.start_link(arg)
       # {Ephemeral.Worker, arg}
+      {Cluster.Supervisor, [topologies, [name: Ephemeral.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
