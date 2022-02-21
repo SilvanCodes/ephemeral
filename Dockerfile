@@ -50,13 +50,13 @@ COPY priv priv
 # step down so that `lib` is available.
 COPY assets assets
 
-# compile assets
-RUN mix assets.deploy
-
 # Compile the release
 COPY lib lib
 
 RUN mix compile
+
+# compile assets
+RUN mix assets.deploy
 
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/
