@@ -8,7 +8,7 @@ defmodule EphemeralWeb.Component.ContactList do
     ~H"""
     <%= for {key, _value} <- @contacts do %>
     <.box>
-      <p id={key}><%= key %> <.copy_to_clipboard target={"##{key}"} /></p>
+      <p id={"id-#{key}"}><%= key %> <.copy_to_clipboard target={"#id-#{key}"} /></p>
     </.box>
     <% end %>
     """
