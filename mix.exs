@@ -12,7 +12,7 @@ defmodule Ephemeral.MixProject do
         # Entry module. Can also be a list of modules
         input: EphemeralWeb.Helper.JS,
         # Output path. Either a path to a js file or a directory
-        output: "assets/js/"
+        output: "assets/js/generated"
       ],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),

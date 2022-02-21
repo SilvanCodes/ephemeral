@@ -32,3 +32,5 @@ ephemeral-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore generated javascript
+/assets/js/generated
