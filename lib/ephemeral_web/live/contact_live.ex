@@ -11,7 +11,7 @@ defmodule EphemeralWeb.ContactLive do
     if connected?(socket) do
       PubSub.subscribe(Ephemeral.PubSub, @presence_topic)
 
-      Presence.track(self(), @presence_topic, UUID.uuid4(), %{
+      Presence.track(socket.transport_pid, @presence_topic, UUID.uuid4(), %{
         online_at: inspect(System.system_time(:second))
       })
     end
