@@ -1,6 +1,8 @@
 /* This file is for your main application CSS */
 @import "../../deps/phexel/assets/elc.css";
 
+@import "./components/copy_to_clipboard.css";
+
 html, body, main {
   height: 100%;
 }

@@ -8,6 +8,8 @@
     <%= live_title_tag assigns[:page_title] || "Ephemeral", suffix: " · Phoenix Framework" %>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <!-- Icons from https://icons.mono.company -->
+    <link href="https://unpkg.com/mono-icons@1.3.1/iconfont/icons.css" rel="stylesheet">
   </head>
   <body>
     <%= @inner_content %>

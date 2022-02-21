@@ -3,7 +3,7 @@ defmodule EphemeralWeb.ContactLive do
   alias EphemeralWeb.Presence
   alias Phoenix.PubSub
 
-  import EphemeralWeb.ContactList
+  import EphemeralWeb.Component.ContactList
 
   @presence_topic "presence"
 

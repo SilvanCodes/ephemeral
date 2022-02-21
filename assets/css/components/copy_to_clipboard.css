@@ -1,0 +1,7 @@
+.copy-to-clipboard {
+    display: var(--copy-to-clipboard, initial);
+}
+
+.copy-to-clipboard:hover {
+    cursor: pointer;
+}

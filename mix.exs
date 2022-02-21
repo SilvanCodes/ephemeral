@@ -7,7 +7,13 @@ defmodule Ephemeral.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: [:gettext] ++ Mix.compilers() ++ [:elixir_script],
+      elixir_script: [
+        # Entry module. Can also be a list of modules
+        input: EphemeralWeb.Helper.JS,
+        # Output path. Either a path to a js file or a directory
+        output: "assets/js/"
+      ],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -50,7 +56,9 @@ defmodule Ephemeral.MixProject do
       # uuids
       {:uuid, "~> 1.1"},
       # clustering
-      {:libcluster, "~> 3.3"}
+      {:libcluster, "~> 3.3"},
+      # write js with elixir
+      {:elixir_script, "~> 0.32"}
     ]
   end
 

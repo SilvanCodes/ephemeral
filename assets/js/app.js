@@ -6,6 +6,10 @@ import "../css/app.css"
 // to get started and then uncomment the line below.
 // import "./user_socket.js"
 
+// setup/call all ElixirScript defined JavaScript
+import ElixirEphemeralWebHelperJS from "./Elixir.EphemeralWeb.Helper.JS.js"
+ElixirEphemeralWebHelperJS.call()
+
 // You can include dependencies in two ways.
 //
 // The simplest option is to put them in assets/vendor and
