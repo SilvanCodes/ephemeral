@@ -1,7 +1,16 @@
 .copy-to-clipboard {
-    display: var(--copy-to-clipboard, initial);
+    display: var(--copy-to-clipboard, inline-table);
+    transition: color var(--t-2) linear;
+    transition: transform var(--t-2) ease-out;
 }
 
 .copy-to-clipboard:hover {
     cursor: pointer;
+}
+
+.copy-to-clipboard:active {
+    color: gray;
+    transition: color var(--t-3) linear;
+    transform: scale(0.9);
+    transition: transform var(--t-3) ease-in;
 }
