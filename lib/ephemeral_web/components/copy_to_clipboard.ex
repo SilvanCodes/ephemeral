@@ -16,6 +16,7 @@ defmodule EphemeralWeb.Component.CopyToClipboard do
           |> Clipboard.writeText()
         end)
       else
+        # Hide component when clipboard is unsupported
         RootStyle.setProperty("--copy-to-clipboard", "none")
       end
     end
@@ -23,7 +24,10 @@ defmodule EphemeralWeb.Component.CopyToClipboard do
 
   def copy_to_clipboard(assigns) do
     ~H"""
-      <i title={gettext("Copy to clipboard")} class="mi-copy copy-to-clipboard elc-icon" phx-click={dispatch("copy_to_clipboard", to: @target)} />
+      <i title={gettext("Copy to clipboard")}
+         class="mi-copy elc-icon copy-to-clipboard"
+         phx-click={dispatch("copy_to_clipboard", to: @target)}
+      />
     """
   end
 end
