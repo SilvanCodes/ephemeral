@@ -3,6 +3,11 @@
 
 @import "./components/copy_to_clipboard.css";
 
+@font-face {
+  font-family: Averta;
+  src: url(/fonts/AvertaDemoPE-Regular.woff2);
+}
+
 :root {
   --ratio: 2.71828;
   --t-5: calc(var(--t-4) / var(--ratio));
@@ -16,6 +21,8 @@
   --t3: calc(var(--t2) * var(--ratio));
   --t4: calc(var(--t3) * var(--ratio));
   --t5: calc(var(--t4) * var(--ratio));
+
+  font-family: Averta, Arial, Helvetica, sans-serif
 }
 
 html, body, main {
