@@ -32,6 +32,10 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :ephemeral, EphemeralWeb.ContactLive,
+  pulse_rate: System.get_env("PULSE_RATE_MILLISECONDS") || 10,
+  end_of_lifeline: System.get_env("END_OF_LIFELINE_MILLISECONDS") || 60000
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
