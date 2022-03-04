@@ -2,6 +2,7 @@
 @import "../../deps/phexel/assets/elc.css";
 
 @import "./components/copy_to_clipboard.css";
+@import "./components/progress_bar.css";
 
 @font-face {
   font-family: Averta;

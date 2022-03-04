@@ -1,0 +1,5 @@
+.progress-bar {
+    background-color: black;
+    height: var(--s-1); 
+    transition: max-inline-size 0.2s linear;
+}
