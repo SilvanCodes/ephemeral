@@ -33,7 +33,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :ephemeral, EphemeralWeb.ContactLive,
-  pulse_rate: System.get_env("PULSE_RATE_MILLISECONDS") || 10,
+  pulse_rate: System.get_env("PULSE_RATE_MILLISECONDS") || 100,
   end_of_lifeline: System.get_env("END_OF_LIFELINE_MILLISECONDS") || 60000
 
 # Import environment specific config. This must remain at the bottom
