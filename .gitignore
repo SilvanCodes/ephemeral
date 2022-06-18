@@ -34,3 +34,6 @@ npm-debug.log
 
 # Ignore generated javascript
 /assets/js/generated
+
+# .envrc could contain secrets
+.envrc
