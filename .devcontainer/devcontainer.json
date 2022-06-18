@@ -15,7 +15,9 @@
         "JakeBecker.elixir-ls",
         "phoenixframework.phoenix",
         "me-dutour-mathieu.vscode-github-actions",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+        "bungcip.better-toml"
     ],
     "settings": {
         "gitlens": {

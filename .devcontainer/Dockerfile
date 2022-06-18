@@ -1,21 +1,9 @@
 ARG RUNNER_IMAGE="debian:bullseye-20210902-slim"
 
 # does user setup and gives 'install-packages' script, see https://github.com/gitpod-io/workspace-images
-FROM gitpod/workspace-base:commit-f2d623ca9d270c2ce8560d2ca0f9ce71b105aff2 as development
-
-USER root
-
-# get inotify-tools for live reload from phoenix, see: https://hexdocs.pm/phoenix/installation.html#inotify-tools-for-linux-users
-RUN install-packages inotify-tools
-
-# install common utilities
-RUN install-packages \
-    curl
+FROM gitpod/workspace-base@sha256:5fcdb99366114646be6a82559aedb498b0f8b500192195782546664514ed166d as development
 
 USER gitpod
-
-# install flyctl, see: https://fly.io/docs/getting-started/installing-flyctl/
-RUN curl -L https://fly.io/install.sh | sh
 
 # setup asdf-vm: https://asdf-vm.com/guide/getting-started.html
 RUN git clone --depth 1 https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.10.0 \
@@ -48,8 +36,26 @@ RUN bash -i -c 'mix archive.install github hexpm/hex ref 52be75c14b5623ba424a50d
 # install rebar
 RUN bash -i -c 'mix local.rebar --force'
 
+USER root
+
+# get inotify-tools for live reload from phoenix, see: https://hexdocs.pm/phoenix/installation.html#inotify-tools-for-linux-users
+RUN install-packages inotify-tools
+
+# install common utilities
+RUN install-packages \
+    curl
+
+USER gitpod
+
+# install flyctl, see: https://fly.io/docs/getting-started/installing-flyctl/
+RUN curl -L https://fly.io/install.sh | sh \
+    && echo 'export FLYCTL_INSTALL="$HOME/.fly"' >> $HOME/.bashrc \
+    && echo 'export PATH="$HOME/.fly/bin:$PATH"' >> $HOME/.bashrc
+
 
 FROM development as builder
+
+USER root
 
 # prepare build dir
 WORKDIR /app
@@ -92,7 +98,7 @@ RUN bash -i -c 'mix release'
 
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
-FROM ${RUNNER_IMAGE}
+FROM ${RUNNER_IMAGE} as release
 
 RUN apt-get update -y && apt-get install -y libstdc++6 openssl libncurses5 locales \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
